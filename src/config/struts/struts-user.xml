@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<!-- struts2.0 需要配置namespace 不然会报not define result xxx -->
+	<!-- namespace根据调用Action的页面路径配置 -->
+	<package name="user" namespace="/user" extends="struts-default">
+		<!-- 用户Action -->
+		<action name="*" class="userAction" method="{1}">
+			<!-- login用户登录 -->
+			<result name="login">/user/success.jsp</result>			  
+			<result name="loginerror">/user/error.jsp</result>
+			<!-- add用户添加 -->
+			<result name="addSuccess">/user/optionSuccess.jsp</result>
+			<result name="addError">/user/optionError.jsp</result>
+			<!-- update用户修改 -->
+			<result name="updateSuccess">/user/optionSuccess.jsp</result>
+			<result name="updateError">/user/optionError.jsp</result>
+			<!-- delete用户删除-->
+			<result name="deleteSuccess">/index.jsp</result>
+			<result name="deleteError">/user/optionError.jsp</result>
+			<!-- list用户列举-->
+			<result name="listSuccess">/user/listUser.jsp</result>
+			<result name="listError">/user/optionError.jsp</result>
+		</action>
+	</package>
+</struts>    

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"  
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">  
+<sqlMap namespace="user">  
+    <typeAlias alias="user" type="com.csii.bean.User"/>  
+      
+    <insert id="saveUser" parameterClass="user">  
+        <![CDATA[  
+            insert into User(userName, userPassword)  
+            values(#userName#,#userPassword#)  
+        ]]>  
+    </insert>  
+      
+    <delete id="deleteUser" parameterClass="int">  
+        <![CDATA[  
+            delete from User where userID=#userID#  
+        ]]>  
+    </delete>  
+      
+    <select id="getAllUser" resultClass="user">  
+        <![CDATA[  
+            select * from User  
+        ]]>  
+    </select>
+    
+    <select id="loginUser" parameterClass="user" resultClass="user">  
+        <![CDATA[  
+            select * from User where userName=#userName# and userPassword=#userPassword#  
+        ]]>  
+    </select>    
+      
+    <update id="updateUser" parameterClass="user">  
+        <![CDATA[  
+            update User set  
+            userName=#userName#,  
+            userPassword=#userPassword#
+            where userID=#userID#  
+        ]]>  
+    </update>  
+      
+    <select id="findUserById" parameterClass="int" resultClass="user">  
+        <![CDATA[  
+            select * from User where userID=#userID#  
+        ]]>  
+    </select>  
+      
+</sqlMap> 

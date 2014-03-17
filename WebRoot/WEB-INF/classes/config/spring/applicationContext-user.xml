@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<!-- 数据层注入 -->
+	<bean id="userDaoImpl" class="com.csii.dao.impl.UserDaoImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient"/>
+		</property>
+	</bean>
+	<!-- 业务逻辑层注入 -->
+	<bean id="userServiceImpl" class="com.csii.service.impl.UserServiceImpl">
+		<property name="userDao">
+			<ref bean="userDaoImpl"/>
+		</property>
+	</bean>
+	<!-- UserAction注入 -->
+	<bean id="userAction" class="com.csii.action.UserAction">
+		<property name="userServiceImpl">
+			<ref bean="userServiceImpl"/>
+		</property>
+	</bean>
+</beans>
